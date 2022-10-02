@@ -62,9 +62,10 @@ const MemberPage = () => {
 
   return (
     <>
+      <p>Some PR Branch</p>
       <div className="App">
         <p>Member Page</p>
-        <FormMember/>
+        <FormMember />
       </div>
 
       <div>
