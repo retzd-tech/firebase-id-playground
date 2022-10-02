@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-
-import initilizedFirebase from "./../api/init";
 import operation from "./../api";
 
 const ListMembers = (props) => {
@@ -16,7 +14,7 @@ const ListMembers = (props) => {
   });
 };
 
-const FormMember = (props) => {
+const FormMember = () => {
   const handleOnChange = (event, setter) => {
     const { value } = event.target;
     setter(value);
@@ -45,9 +43,8 @@ const FormMember = (props) => {
 
       <button
         onClick={() => {
-          const { firestore } = props;
           const data = { fullname, email };
-          operation.addMember(data, firestore);
+          operation.addMember(data);
         }}
       >
         Add Member
@@ -57,19 +54,17 @@ const FormMember = (props) => {
 };
 
 const MemberPage = () => {
-  const { initializeFirestore } = initilizedFirebase;
-  const firestore = initializeFirestore();
   const [members, setMembers] = useState([]);
 
   useEffect(() => {
-    operation.getMembersListOnce(firestore).then(setMembers);
+    operation.getMembersListRealtime(setMembers);
   }, []);
 
   return (
     <>
       <div className="App">
         <p>Member Page</p>
-        <FormMember firestore={firestore} />
+        <FormMember/>
       </div>
 
       <div>

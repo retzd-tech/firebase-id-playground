@@ -1,31 +1,29 @@
-import {
-  collection,
-  addDoc,
-  getDocs,
-  onSnapshot,
-  query,
-  where,
-} from "firebase/firestore";
+import { collection, addDoc, getDocs, onSnapshot, query, orderBy, limit } from "firebase/firestore";
+import initilizedFirebase from "./../api/init";
 
 const collections = {
   MEMBERS: "members",
 };
 
-const addMember = async (data, instance) => {
+const { initializeFirestore } = initilizedFirebase;
+
+const firestore = initializeFirestore();
+
+const addMember = async (data) => {
   try {
-    const membersCollection = collection(instance, collections.MEMBERS);
+    const membersCollection = collection(firestore, collections.MEMBERS);
     await addDoc(membersCollection, data);
   } catch (e) {
     console.error("Error adding document: ", e);
   }
 };
 
-const getMembersListRealtime = async (instance) => {
+const getMembersListRealtime = async (setMembers) => {
   try {
-    const members = [];
-
-    const membersCollection = collection(instance, collections.MEMBERS);
-    onSnapshot(membersCollection, (snapshots) => {
+    const membersCollection = collection(firestore, collections.MEMBERS);
+    const queriedMembersCollection = query(membersCollection, orderBy("fullname"), limit(100));
+    onSnapshot(queriedMembersCollection, (snapshots) => {
+      const members = [];
       snapshots.forEach((snapshots) => {
         const member = {
           id: snapshots.id,
@@ -33,9 +31,8 @@ const getMembersListRealtime = async (instance) => {
         };
         members.push(member);
       });
+      setMembers(members);
     });
-
-    return members;
   } catch (e) {
     console.error("Error getting documents: ", e);
   }
