@@ -62,6 +62,7 @@ const MemberPage = () => {
 
   return (
     <>
+    <p>Master branch on Preview</p>
       <div className="App">
         <p>Member Page</p>
         <FormMember/>
