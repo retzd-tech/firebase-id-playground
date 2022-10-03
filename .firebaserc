@@ -1,5 +1,18 @@
 {
   "projects": {
     "default": "indonesia-firebase-playground"
-  }
+  },
+  "targets": {
+    "indonesia-firebase-playground": {
+      "hosting": {
+        "another-playground": [
+          "another-playground"
+        ],
+        "indonesia-firebase-playground": [
+          "indonesia-firebase-playground"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
