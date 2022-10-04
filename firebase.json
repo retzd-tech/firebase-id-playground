@@ -19,16 +19,19 @@
       ]
     }
   ],
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
   "emulators": {
+    "firestore": {
+      "port": 8000
+    },
     "hosting": {
-      "port": 5000
+      "port": 4700
     },
     "ui": {
       "enabled": true
     }
-  },
-  "firestore": {
-    "rules": "firestore.rules",
-    "indexes": "firestore.indexes.json"
   }
 }

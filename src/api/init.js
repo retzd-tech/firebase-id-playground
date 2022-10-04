@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, connectFirestoreEmulator } from "firebase/firestore";
 
 import { getAnalytics } from "firebase/analytics";
 
@@ -13,13 +13,20 @@ const firebaseConfig = {
   measurementId: "G-Q5R35B65T2"
 };
 
-const initializeFirestore = () => {
+const initializeFirestore = async () => {
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   initializeAnalytics(app)
 
   // Initialize Cloud Firestore and get a reference to the service
-  return getFirestore(app);
+  let firestore = getFirestore(app);
+  
+  console.log('Is localhost', checkIfLocalhost());
+  // if (checkIfLocalhost()) {
+  connectFirestoreEmulator(firestore, 'localhost', 8000);
+  // }
+
+  return firestore;
 };
 
 const initializeAnalytics = (app) => {
@@ -28,6 +35,13 @@ const initializeAnalytics = (app) => {
 
 const initilizedFirebase = {
   initializeFirestore
+}
+
+const checkIfLocalhost = () => {
+  if (window.location.hostname.includes('localhost')) {
+    return true;
+  }
+  return false;
 }
 
 export default initilizedFirebase;

@@ -57,8 +57,16 @@ const MemberPage = () => {
   const [members, setMembers] = useState([]);
 
   useEffect(() => {
+    console.log('Is localhost', checkIfLocalhost());
     operation.getMembersListRealtime(setMembers);
   }, []);
+  
+  const checkIfLocalhost = () => {
+    if (window.location.hostname.includes('localhost')) {
+      return true;
+    }
+    return false;
+  }
 
   return (
     <>
