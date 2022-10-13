@@ -21,12 +21,7 @@ const collections = {
   MEMBERS: "members",
 };
 
-const { initializeFirestore } = initilizedFirebase;
-let firestore;
-
-initializeFirestore().then((initializedFirestore) => {
-  firestore = initializedFirestore;
-});
+const { firestore } = initilizedFirebase;
 
 const addMember = async (data) => {
   try {
