@@ -8,15 +8,6 @@
         "**/.*",
         "**/node_modules/**"
       ]
-    },
-    {
-      "target": "another-playground",
-      "public": "build",
-      "ignore": [
-        "firebase.json",
-        "**/.*",
-        "**/node_modules/**"
-      ]
     }
   ],
   "firestore": {
@@ -33,5 +24,17 @@
     "ui": {
       "enabled": true
     }
-  }
+  },
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log"
+      ]
+    }
+  ]
 }
