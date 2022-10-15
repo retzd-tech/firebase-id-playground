@@ -3,7 +3,7 @@ import { UploadPhotoProfilePage, MemberPage } from "./pages";
 
 const App = () => {
 
-  return <MemberPage />;
+  return <UploadPhotoProfilePage />;
 };
 
 export default App;

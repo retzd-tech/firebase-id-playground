@@ -8,7 +8,6 @@ import {
   limit,
 } from "firebase/firestore";
 import {
-  getStorage,
   ref,
   uploadBytes,
   uploadBytesResumable,
@@ -21,7 +20,7 @@ const collections = {
   MEMBERS: "members",
 };
 
-const { firestore } = initilizedFirebase;
+const { firestore, firebaseStorage } = initilizedFirebase;
 
 const addMember = async (data) => {
   try {
@@ -76,9 +75,8 @@ const getMembersListOnce = async (instance) => {
 };
 
 const uploadImage = (file) => {
-  const storage = getStorage();
   const fileUpload = file.target.files[0];
-  const storageRef = ref(storage, "images/" + fileUpload.name);
+  const storageRef = ref(firebaseStorage, "images/" + fileUpload.name);
 
   try {
     uploadBytes(storageRef, file).then((snapshot) => {
@@ -90,12 +88,11 @@ const uploadImage = (file) => {
 };
 
 const uploadImageResumeable = async (file) => {
-  const storage = getStorage();
   const metadata = {
     contentType: "image/jpeg",
   };
   const fileUpload = file.target.files[0];
-  const storageRef = ref(storage, "images/" + fileUpload.name);
+  const storageRef = ref(firebaseStorage, "images/" + fileUpload.name);
   const uploadTask = uploadBytesResumable(storageRef, fileUpload, metadata);
   uploadTask.on(
     "state_changed",

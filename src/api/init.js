@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, connectFirestoreEmulator } from "firebase/firestore";
+import { getStorage, connectStorageEmulator } from "firebase/storage";
 import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
@@ -13,15 +14,21 @@ const firebaseConfig = {
 };
 
 const initializeFirestore = (app) => {
-  if (isLocalhost()) {
-    let firestore = getFirestore();
-    connectFirestoreEmulator(firestore, "localhost", 8000);
-    return firestore;
-  }
- 
   let firestore = getFirestore(app);
+  if (isLocalhost()) {
+    connectFirestoreEmulator(firestore, "localhost", 8000);
+  }
   return firestore;
 };
+
+const initializeFirebaseStorage = (app) => {
+  let firebaseStorage = getStorage(app);
+  if (isLocalhost()) {
+    connectStorageEmulator(firebaseStorage, "localhost", 9199);
+  }
+  return firebaseStorage;
+};
+
 
 const initializeAnalytics = (app) => {
   getAnalytics(app);
@@ -38,8 +45,10 @@ const initialize = () => {
   const app = initializeApp(firebaseConfig);
   initializeAnalytics(app);
   const firestore = initializeFirestore(app);
+  const firebaseStorage = initializeFirebaseStorage(app);
   return {
-    firestore
+    firestore,
+    firebaseStorage
   }
 }
 
