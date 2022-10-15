@@ -1,5 +1,5 @@
 import "./App.css";
-import { UploadPhotoProfilePage, MemberPage } from "./pages";
+import { UploadPhotoProfilePage } from "./pages";
 
 const App = () => {
 
