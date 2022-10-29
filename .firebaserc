@@ -13,5 +13,12 @@
         ]
       }
     }
+  },
+  "etags": {
+    "indonesia-firebase-playground": {
+      "extensionInstances": {
+        "storage-resize-images": "391b6db3891305098125cb538665883ff56245dd8cb644cf7a032e67d9faf053"
+      }
+    }
   }
 }

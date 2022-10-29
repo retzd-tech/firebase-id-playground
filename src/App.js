@@ -2,7 +2,6 @@ import "./App.css";
 import { UploadPhotoProfilePage } from "./pages";
 
 const App = () => {
-
   return <UploadPhotoProfilePage />;
 };
 
