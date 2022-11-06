@@ -1,8 +1,8 @@
 import "./App.css";
-import { UploadPhotoProfilePage } from "./pages";
+import { MemberPage } from "./pages";
 
 const App = () => {
-  return <UploadPhotoProfilePage />;
+  return <MemberPage />;
 };
 
 export default App;

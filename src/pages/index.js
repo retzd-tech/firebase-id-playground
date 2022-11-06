@@ -1,4 +1,5 @@
 import MemberPage from "./MemberPage";
 import UploadPhotoProfilePage from "./UploadPhotoProfilePage";
+import UploadPhotoProfilePageForAdmin from "./UploadPhotoProfilePageForAdmin";
 
-export { MemberPage, UploadPhotoProfilePage };
+export { MemberPage, UploadPhotoProfilePage,UploadPhotoProfilePageForAdmin };

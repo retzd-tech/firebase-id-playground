@@ -55,21 +55,41 @@ const FormMember = () => {
 
 const MemberPage = () => {
   const [members, setMembers] = useState([]);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-    operation.getMembersListRealtime(setMembers);
+    try {
+      operation.getMembersListRealtime(setMembers);
+      setIsError(false);
+    } catch (error) {
+      setIsError(true);
+    }
   }, []);
 
   return (
     <>
       <div className="App">
         <p>Member Page</p>
-        <FormMember/>
+        <FormMember />
       </div>
 
+      <p>Member Lists</p>
+      <div>{isError && <p>Error, have you logged in already ?</p>}</div>
+      <div>{!isError && <ListMembers members={members} />}</div>
+      
       <div>
-        <p>Member Lists</p>
-        <ListMembers members={members} />
+        <p>Login Admin</p>
+        <button
+          onClick={async () => {
+            await operation.loginEmailAndPassword(
+              "smith@email.com",
+              "smith@email.com"
+            );
+            operation.getMembersListRealtime(setMembers);
+          }}
+        >
+          Login as Admin
+        </button>
       </div>
     </>
   );

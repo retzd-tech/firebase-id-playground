@@ -30,7 +30,13 @@
     "storage": {
       "port": 9199
     },
-    "singleProjectMode": true
+    "singleProjectMode": true,
+    "auth": {
+      "port": 9099
+    },
+    "database": {
+      "port": 9000
+    }
   },
   "functions": [
     {

@@ -11,8 +11,10 @@ import {
   ref,
   uploadBytes,
   uploadBytesResumable,
-  getDownloadURL
+  getDownloadURL,
 } from "firebase/storage";
+
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 import initilizedFirebase from "./../api/init";
 
@@ -20,7 +22,7 @@ const collections = {
   MEMBERS: "members",
 };
 
-const { firestore, firebaseStorage } = initilizedFirebase;
+const { authentication, firestore, firebaseStorage } = initilizedFirebase;
 
 const addMember = async (data) => {
   try {
@@ -80,10 +82,10 @@ const uploadImage = (file) => {
 
   try {
     uploadBytes(storageRef, file).then((snapshot) => {
-      console.log("Uploaded a blob or file!");
+      console.log("Uploaded a blob or file!", snapshot);
     });
   } catch (error) {
-    console.log("Upload error");
+    console.log("Upload error", error);
   }
 };
 
@@ -128,12 +130,23 @@ const uploadImageResumeable = async (file) => {
   );
 };
 
+const loginEmailAndPassword = async (email, password) => {
+  try {
+    const response = await signInWithEmailAndPassword(authentication, email, password);
+    console.log(response);
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const operation = {
   addMember,
   getMembersListOnce,
   getMembersListRealtime,
   uploadImage,
-  uploadImageResumeable
+  uploadImageResumeable,
+  loginEmailAndPassword
 };
 
 export default operation;

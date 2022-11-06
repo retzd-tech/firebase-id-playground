@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getFirestore, connectFirestoreEmulator } from "firebase/firestore";
 import { getStorage, connectStorageEmulator } from "firebase/storage";
 import { getAnalytics } from "firebase/analytics";
+import { getAuth, connectAuthEmulator } from "firebase/auth"
 
 const firebaseConfig = {
   apiKey: "AIzaSyD-J-BL09PK_DxIbjpERcN4y_EpPruhY0w",
@@ -34,6 +35,14 @@ const initializeAnalytics = (app) => {
   getAnalytics(app);
 };
 
+const initializeAuthentication = (app) => {
+  const authentication = getAuth();
+  if (isLocalhost()) {
+    connectAuthEmulator(authentication, "http://localhost:9099")
+  }
+  return authentication;
+}
+
 const isLocalhost = () => {
   if (window.location.hostname.includes("localhost")) {
     return true;
@@ -46,8 +55,10 @@ const initialize = () => {
   initializeAnalytics(app);
   const firestore = initializeFirestore(app);
   const firebaseStorage = initializeFirebaseStorage(app);
+  const authentication = initializeAuthentication(app);
   return {
     firestore,
+    authentication,
     firebaseStorage
   }
 }
