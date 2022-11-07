@@ -1,4 +1,7 @@
-08:36:01.722 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
-08:36:01.815 [main] INFO com.firebase.server.forge.App$ - Listening at localhost:9000
-08:54:00.237 [Thread-0] INFO com.firebase.server.forge.App$ - Attempting graceful shutdown.
-08:54:00.287 [Thread-0] INFO com.firebase.server.forge.App$ - Graceful shutdown complete.
+18:49:48.069 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+18:49:48.234 [main] INFO com.firebase.server.forge.App$ - Listening at localhost:9000
+18:50:14.947 [NamespaceSystem-akka.actor.default-dispatcher-6] INFO com.firebase.core.namespace.NamespaceActor - indonesia-firebase-playground successfully activated FBKV (SurveyIdle(0)) wait: 85ms, init: 0ms
+19:17:11.869 [Thread-0] INFO com.firebase.server.forge.App$ - Attempting graceful shutdown.
+19:17:11.880 [NamespaceSystem-akka.actor.default-dispatcher-14] INFO com.firebase.core.namespace.Terminator$Terminator - 1 actors left to terminate: indonesia-firebase-playground
+19:17:11.887 [NamespaceSystem-akka.actor.default-dispatcher-14] INFO com.firebase.core.namespace.NamespaceActor - stopped namespace actor for indonesia-firebase-playground
+19:17:11.890 [Thread-0] INFO com.firebase.server.forge.App$ - Graceful shutdown complete.

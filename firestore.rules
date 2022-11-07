@@ -2,8 +2,26 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     match /members/{document} {
-      allow read: if true
-      allow write: if request.auth.token.uid != null
+      allow read, write: if 
+      request.auth.token.uid 
+      //document oriented
+      // in get(/databases/$(database)/documents/members/$(document)).data.has_permission;
+      //reference oriented
+      in get(/databases/$(database)/documents/admins/has_permissions).data.has_permission;
+      &&
+      //data validation
+      // ("email" in request.resource.data)
+      //key validation
+      request.resource.data.keys().hasAll([
+        "email",
+        "password"
+      ])
+
+      //Unchanged keys
+      // allow update: if
+      // request.resource.data.diff(resource.data).unchangedKeys().hasAll([
+      //   "some not changed key such as id"
+      // ])
     }
   }
 }
