@@ -18,4 +18,4 @@ jobs:
         run: npm install
       - name : Run all the tests
         working-directory: firebase-id-playground
-        run: firebase emulators:exec 'npm run test'
+        run: firebase emulators:exec --project indonesia-firebase-playground 'npm run test'
