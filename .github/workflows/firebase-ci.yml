@@ -22,4 +22,4 @@ jobs:
         working-directory: functions
         run: npm install
       - name : Run all the tests
-        run: export GOOGLE_APPLICATION_CREDENTIALS=${{ secrets.FIREBASE_API_KEY }} && firebase emulators:exec --project indonesia-firebase-playground 'npm run test'
+        run: firebase emulators:exec --project indonesia-firebase-playground --token ${{ secrets.FIREBASE_TOKEN }} 'npm run test'
