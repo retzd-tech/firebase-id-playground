@@ -24,4 +24,4 @@ jobs:
       - name : Run all the tests
         run: firebase emulators:exec --project indonesia-firebase-playground 'npm run test'
         env:
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.FIREBASE_API_KEY }}
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_INDONESIA_FIREBASE_PLAYGROUND }}
