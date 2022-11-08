@@ -22,4 +22,6 @@ jobs:
         working-directory: functions
         run: npm install
       - name : Run all the tests
-        run: firebase emulators:exec --project indonesia-firebase-playground --token ${{ secrets.FIREBASE_TOKEN }} 'npm run test'
+        run: firebase emulators:exec --project indonesia-firebase-playground 'npm run test'
+        with:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.FIREBASE_API_KEY }}
