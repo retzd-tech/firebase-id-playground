@@ -24,4 +24,4 @@ jobs:
       - name : Run all the tests
         run: firebase emulators:exec --project indonesia-firebase-playground 'npm run test'
         env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          KEY: ${{ secrets.FIREBASE_API_KEY }}
