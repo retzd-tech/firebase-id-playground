@@ -7,7 +7,7 @@ service cloud.firestore {
       //document oriented
       // in get(/databases/$(database)/documents/members/$(document)).data.has_permission;
       //reference oriented
-      in get(/databases/$(database)/documents/admins/has_permissions).data.has_permission;
+      in get(/databases/$(database)/documents/admins/has_permissions).data.has_permission
       &&
       //data validation
       // ("email" in request.resource.data)
