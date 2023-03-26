@@ -8,6 +8,15 @@
         "**/.*",
         "**/node_modules/**"
       ]
+    },
+    {
+      "target": "another-playground",
+      "public": "build",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ]
     }
   ],
   "firestore": {

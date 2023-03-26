@@ -1,27 +1,17 @@
 rules_version = '2';
 service cloud.firestore {
-  match /databases/{database}/documents {
-    match /members/{document} {
-      allow read, write: if 
-      request.auth.token.uid 
-      //document oriented
-      // in get(/databases/$(database)/documents/members/$(document)).data.has_permission;
-      //reference oriented
-      in get(/databases/$(database)/documents/admins/has_permissions).data.has_permission
-      &&
-      //data validation
-      // ("email" in request.resource.data)
-      //key validation
-      request.resource.data.keys().hasAll([
-        "email",
-        "password"
-      ])
+  function isAdminHasPermission(privelege, database) {
+    return request.auth.uid in get(/databases/$(database)/documents/admins/has_permission).data[privelege]
+  }
 
-      //Unchanged keys
-      // allow update: if
-      // request.resource.data.diff(resource.data).unchangedKeys().hasAll([
-      //   "some not changed key such as id"
-      // ])
+  function hasKey(field) {
+    return request.resource.data.keys().hasAll(field)
+  }
+
+  match /databases/{database}/documents {
+    match /members/{memberId} {
+      allow read: if request.auth.uid == memberId
+      allow write: if isAdminHasPermission("write", database) && hasKey(["email"])
     }
   }
 }
