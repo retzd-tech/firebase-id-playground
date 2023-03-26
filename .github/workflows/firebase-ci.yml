@@ -6,6 +6,7 @@ name: Run all test using Firebase Emulator
   push:
     branches:
       - master
+      - STORY-*
 jobs:
   emulator_test:
     runs-on: ubuntu-latest
