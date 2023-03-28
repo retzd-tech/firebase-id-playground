@@ -19,10 +19,11 @@ const getFirestore = (context) => {
     return context.firestore();
 }
 
+beforeEach(async () => {
+    firebase = await getFirebase();
+})
+
 describe("Members", () => {
-    beforeEach(async () => {
-        firebase = await getFirebase();
-    })
 
     it("should able to see members profile data", async () => {
         const auth = firebase.unauthenticatedContext();
