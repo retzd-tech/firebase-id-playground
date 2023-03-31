@@ -10,10 +10,7 @@
     "firebase": "^9.9.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "mocha --exit",
-    "eject": "react-scripts eject"
+    "test": "mocha --exit"
   },
   "eslintConfig": {
     "extends": [
