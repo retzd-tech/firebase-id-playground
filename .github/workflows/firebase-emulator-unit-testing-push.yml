@@ -20,6 +20,6 @@ jobs:
       - name: Install Dependancies on root
         run: echo "npm install"
       - name : Run tests with imported data
-        run: ./lib/bin/firebase.js emulators:exec --project indonesia-firebase-playground --import="emulators-data" --only firestore 'npm run test'
+        run: /opt/hostedtoolcache/node/16.19.1/x64/lib/node_modules/firebase-tools/lib/bin/firebase.js emulators:exec --project indonesia-firebase-playground --import="emulators-data" --only firestore 'npm run test'
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
