@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: "16"
       - name: Install Firebase Tools
-        run: npm install -g /firebase-tools
+        run: npm install -g /firebase-tool
       - name: Install Dependancies on root
         run: echo "npm install"
       - name : Run tests with imported data
