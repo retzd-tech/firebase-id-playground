@@ -1,9 +1,0 @@
-{
-  "hosting": {
-    "public": ".",
-    "ignore": [
-      "ignored.txt",
-      "ignored/**/*.txt"
-    ]
-  }
-}

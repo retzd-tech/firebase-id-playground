@@ -1,9 +1,0 @@
-{
-  "name": "codebase-v1",
-  "dependencies": {
-    "firebase-functions": "^4.0.0"
-  },
-  "engines": {
-    "node": "16"
-  }
-}

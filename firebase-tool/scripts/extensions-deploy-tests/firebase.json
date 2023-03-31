@@ -1,6 +1,0 @@
-{
-  "extensions": {
-    "test-instance1": "firebase/firestore-bigquery-export@^0.1.18",
-    "test-instance2": "firebase/storage-resize-images@^0.1.22"
-  }
-}
