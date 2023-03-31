@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: "16"
       - name: Install Firebase Tools
-        run: echo "root" && pwd && cd $(npm root -g) && pwd && ls
+        run: echo "npm install -g firebase-tools"
       - name: Install Dependancies on root
         run: echo "npm install"
       - name : Run tests with imported data
