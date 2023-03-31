@@ -1,0 +1,5 @@
+/templates
+/node_modules
+/lib/**/*
+/CONTRIBUTING.md
+/scripts/frameworks-tests/vite-project/**
