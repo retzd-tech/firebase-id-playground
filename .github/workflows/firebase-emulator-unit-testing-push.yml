@@ -16,9 +16,9 @@ jobs:
         with:
           node-version: "16"
       - name: Install Firebase Tools
-        run: npm install -g firebase-tools
+        run: npm install -g /firebase-tools
       - name: Install Dependancies on root
-        run: npm install
+        run: echo "npm install"
       - name : Run tests with imported data
         run: firebase emulators:exec --project indonesia-firebase-playground --import="emulators-data" --only firestore 'npm run test'
         env:
