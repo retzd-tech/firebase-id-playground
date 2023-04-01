@@ -1,15 +1,4 @@
 {
-  "hosting": [
-    {
-      "target": "indonesia-firebase-playground",
-      "public": "build",
-      "ignore": [
-        "firebase.json",
-        "**/.*",
-        "**/node_modules/**"
-      ]
-    }
-  ],
   "firestore": {
     "rules": "firestore.rules",
     "indexes": "firestore.indexes.json"
@@ -18,43 +7,9 @@
     "firestore": {
       "port": 8000
     },
-    "hosting": {
-      "port": 4700
-    },
     "ui": {
-      "port": 4200,
       "enabled": true
-    },
-    "functions": {
-      "port": 5001
-    },
-    "storage": {
-      "port": 9199
-    },
-    "singleProjectMode": true,
-    "auth": {
-      "port": 9099
-    },
-    "database": {
-      "port": 9000
     }
-  },
-  "functions": [
-    {
-      "source": "functions",
-      "codebase": "default",
-      "ignore": [
-        "node_modules",
-        ".git",
-        "firebase-debug.log",
-        "firebase-debug.*.log"
-      ]
-    }
-  ],
-  "storage": {
-    "rules": "storage.rules"
-  },
-  "extensions": {
-    "storage-resize-images": "firebase/storage-resize-images@0.1.30"
   }
 }
+
